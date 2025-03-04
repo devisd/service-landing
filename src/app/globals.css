@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add attention animation for the floating helper */
+@keyframes pulse-attention {
+    0% {
+        box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(2, 132, 199, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(2, 132, 199, 0);
+    }
+}
+
+.pulse-attention {
+    animation: pulse-attention 2s infinite;
+    animation-delay: 3s;
+    /* Start pulsing after 3 seconds */
+}
+
+/* Add smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom styles for dark mode */
+.dark .dark\:bg-dark-bg {
+    background-color: #121212;
+}
+
+.dark .dark\:bg-dark-surface {
+    background-color: #1e1e1e;
+}
+
+.dark .dark\:text-dark-text {
+    color: #e2e2e2;
+}
+
+.dark .dark\:border-dark-border {
+    border-color: #2e2e2e;
+}
+
 @layer base {
     body {
         @apply text-gray-800 antialiased;

@@ -41,6 +41,25 @@ module.exports = {
             boxShadow: {
                 'service-card': '0 4px 20px rgba(0, 0, 0, 0.08)',
             },
+            animation: {
+                'fade-in': 'fadeIn 0.3s ease-in-out',
+                'slide-up': 'slideUp 0.3s ease-in-out',
+                'bounce-limited': 'bounceLimited 1s ease-in-out 2',
+            },
+            keyframes: {
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+                slideUp: {
+                    '0%': { transform: 'translateY(10px)', opacity: '0' },
+                    '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                bounceLimited: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' },
+                },
+            },
         },
     },
     plugins: [],

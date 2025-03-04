@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import type { Metadata } from 'next';
+import FloatingHelper from '@/components/common/FloatingHelper';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
@@ -21,6 +22,10 @@ export default function RootLayout({
             <body className={`${inter.className} bg-white text-gray-900 dark:bg-dark-bg dark:text-dark-text transition-colors duration-200`}>
                 <ThemeProvider>
                     {children}
+                    <FloatingHelper
+                        phoneNumber="7XXXXXXXXXX" // Replace with your actual phone number
+                        telegramUsername="yourTelegramUsername" // Replace with your actual username
+                    />
                 </ThemeProvider>
             </body>
         </html>
