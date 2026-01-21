@@ -1,62 +1,71 @@
 import React from 'react';
+import { DocumentIcon, SearchIcon, ChatIcon, CogIcon, CheckCircleIcon } from '@/components/icons';
+import styles from './WorkProcess.module.scss';
 
-const WorkProcess = () => {
-    const steps = [
-        {
-            number: 1,
-            title: "Обращение",
-            description: "Оставьте заявку на сайте или позвоните нам"
-        },
-        {
-            number: 2,
-            title: "Диагностика",
-            description: "Проводим бесплатную диагностику и определяем причину неисправности"
-        },
-        {
-            number: 3,
-            title: "Расчет стоимости",
-            description: "Предоставляем точную смету работ без скрытых платежей"
-        },
-        {
-            number: 4,
-            title: "Ремонт",
-            description: "Выполняем ремонт согласованными методами в оговоренные сроки"
-        },
-        {
-            number: 5,
-            title: "Проверка",
-            description: "Тестируем устройство на работоспособность всех функций"
-        },
-        {
-            number: 6,
-            title: "Выдача",
-            description: "Возвращаем отремонтированное устройство с гарантийным талоном"
-        },
-    ];
+const steps = [
+    {
+        number: 1,
+        title: 'Заявка',
+        icon: <DocumentIcon size={24} />,
+    },
+    {
+        number: 2,
+        title: 'Диагностика',
+        icon: <SearchIcon size={24} />,
+    },
+    {
+        number: 3,
+        title: 'Согласование',
+        icon: <ChatIcon size={24} />,
+    },
+    {
+        number: 4,
+        title: 'Ремонт',
+        icon: <CogIcon size={24} />,
+    },
+    {
+        number: 5,
+        title: 'Выдача',
+        icon: <CheckCircleIcon size={24} />,
+    },
+];
 
+const WorkProcess: React.FC = () => {
     return (
-        <section className="py-16">
-            <div className="container mx-auto px-4">
-                <h3 className="text-3xl font-bold text-center mb-10">
-                    Как мы работаем
-                </h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {steps.map((step, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center text-center"
-                        >
-                            <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-2xl font-bold mb-4">
-                                {index + 1}
+        <section id="process" className={styles.section}>
+            <div className={styles.container}>
+                <h2 className={styles.title}>
+                    Процесс ремонта
+                </h2>
+
+                <div className={styles.wrapper}>
+                    <div className={styles.connectionLine} />
+
+                    <div className={styles.grid}>
+                        {steps.map((step, index) => (
+                            <div key={step.number} className={styles.step}>
+                                <div className={styles.stepNumber}>
+                                    <span>{step.number}</span>
+                                </div>
+
+                                {index < steps.length - 1 && (
+                                    <div className={styles.mobileConnector} />
+                                )}
+
+                                <div className={styles.stepIcon}>
+                                    {step.icon}
+                                </div>
+
+                                <h3 className={styles.stepTitle}>
+                                    {step.title}
+                                </h3>
                             </div>
-                            <h4 className="text-xl font-semibold mb-2">{step.title}</h4>
-                            <p className="text-gray-700">{step.description}</p>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
     );
 };
 
-export default WorkProcess; 
+export default WorkProcess;

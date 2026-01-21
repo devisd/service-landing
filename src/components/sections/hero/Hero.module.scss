@@ -1,0 +1,129 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.backgroundImage {
+    object-fit: cover;
+    object-position: center;
+}
+
+.backgroundOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        $color-background 0%,
+        rgba($color-background, 0.8) 50%,
+        $color-background 100%
+    );
+}
+
+.container {
+    @include container;
+    position: relative;
+    z-index: 10;
+}
+
+.content {
+    max-width: 768px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-6;
+    line-height: 1.1;
+    
+    @include md {
+        font-size: $font-size-5xl;
+    }
+    
+    @include lg {
+        font-size: $font-size-6xl;
+    }
+}
+
+.subtitle {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-10;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include md {
+        font-size: $font-size-xl;
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-4;
+    
+    @include sm {
+        flex-direction: row;
+    }
+}
+
+.primaryButton {
+    @include button-base;
+    padding: $spacing-4 $spacing-8;
+    background-color: $color-accent;
+    color: $color-text-primary;
+    border-radius: $radius-full;
+    font-size: $font-size-base;
+    
+    &:hover {
+        background-color: $color-accent-hover;
+    }
+}
+
+.secondaryButton {
+    @include button-base;
+    padding: $spacing-4 $spacing-6;
+    background: transparent;
+    color: $color-text-primary;
+    font-size: $font-size-base;
+    
+    &:hover {
+        color: $color-accent;
+    }
+    
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-left: $spacing-2;
+        transition: transform $transition-base;
+    }
+    
+    &:hover svg {
+        transform: translateX(4px);
+    }
+}
+
+.bottomFade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 128px;
+    background: linear-gradient(to top, $color-background, transparent);
+}

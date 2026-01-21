@@ -1,21 +1,24 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import CookieConsent from '../CookieConsent';
+import styles from './Layout.module.scss';
 
 interface LayoutProps {
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className={styles.layout}>
             <Header />
-            <main className="flex-grow">
+            <main className={styles.main}>
                 {children}
             </main>
             <Footer />
+            <CookieConsent />
         </div>
     );
 };
 
-export default Layout; 
+export default Layout;

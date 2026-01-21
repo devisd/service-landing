@@ -1,0 +1,104 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    @include section;
+    background-color: $color-surface;
+}
+
+.container {
+    @include container;
+}
+
+.title {
+    @include section-title;
+    text-align: center;
+    margin-bottom: $spacing-16;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.connectionLine {
+    display: none;
+
+    @include md {
+        display: block;
+        position: absolute;
+        top: 32px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background-color: $color-border;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-8;
+
+    @include md {
+        grid-template-columns: repeat(5, 1fr);
+        gap: $spacing-4;
+    }
+}
+
+.step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stepNumber {
+    position: relative;
+    z-index: 10;
+    width: 64px;
+    height: 64px;
+    border-radius: $radius-full;
+    background-color: $color-surface-light;
+    border: 2px solid $color-border;
+    @include flex-center;
+    margin-bottom: $spacing-4;
+
+    span {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $color-text-primary;
+    }
+}
+
+.mobileConnector {
+    display: block;
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    width: 2px;
+    height: $spacing-8;
+    background-color: $color-border;
+    transform: translateX(-50%);
+
+    @include md {
+        display: none;
+    }
+}
+
+.stepIcon {
+    @include flex-center;
+    margin-bottom: $spacing-3;
+
+    svg {
+        width: 28px;
+        height: 28px;
+        color: $color-text-secondary;
+    }
+}
+
+.stepTitle {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+}

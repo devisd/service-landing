@@ -1,0 +1,129 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.cookieConsent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-modal;
+    padding: $spacing-4;
+    animation: slideUp 0.3s ease-out;
+    
+    @include md {
+        padding: $spacing-6;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    padding: $spacing-5;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    
+    @include md {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: $spacing-5 $spacing-6;
+    }
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    
+    @include md {
+        align-items: center;
+    }
+}
+
+.icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: $color-accent;
+    
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.text {
+    p {
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+        line-height: 1.5;
+        
+        @include md {
+            font-size: $font-size-base;
+        }
+    }
+}
+
+.link {
+    color: $color-accent;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color $transition-fast;
+    
+    &:hover {
+        color: $color-accent-light;
+    }
+}
+
+.actions {
+    display: flex;
+    gap: $spacing-3;
+    flex-shrink: 0;
+}
+
+.acceptButton,
+.declineButton {
+    @include button-base;
+    padding: $spacing-2 $spacing-5;
+    font-size: $font-size-sm;
+    border-radius: $radius-lg;
+    
+    @include md {
+        padding: $spacing-3 $spacing-6;
+    }
+}
+
+.acceptButton {
+    background-color: $color-accent;
+    color: $color-text-primary;
+    
+    &:hover {
+        background-color: $color-accent-hover;
+    }
+}
+
+.declineButton {
+    background-color: transparent;
+    color: $color-text-secondary;
+    border: 1px solid $color-border;
+    
+    &:hover {
+        background-color: $color-surface-light;
+        color: $color-text-primary;
+    }
+}

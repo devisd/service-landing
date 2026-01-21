@@ -1,0 +1,161 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.section {
+    @include section;
+}
+
+.container {
+    @include container;
+}
+
+.title {
+    @include section-title;
+    margin-bottom: $spacing-12;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    @include card;
+    position: relative;
+    overflow: hidden;
+    
+    &:hover .cardImage {
+        transform: scale(1.05);
+    }
+}
+
+.cardLarge {
+    @include lg {
+        grid-row: span 2;
+    }
+}
+
+.cardWide {
+    @include md {
+        grid-column: span 2;
+    }
+}
+
+.cardImage {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform $transition-slow;
+}
+
+.cardOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent);
+}
+
+.cardOverlayHorizontal {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), transparent);
+}
+
+.cardContent {
+    position: relative;
+    height: 100%;
+    min-height: 200px;
+    padding: $spacing-6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.cardContentLarge {
+    min-height: 400px;
+    
+    @include lg {
+        min-height: 100%;
+    }
+}
+
+.cardTitle {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-1;
+}
+
+.cardTitleLarge {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-2;
+}
+
+.cardDescription {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+}
+
+.cardDescriptionWide {
+    max-width: 400px;
+}
+
+.cardLink {
+    display: inline-flex;
+    align-items: center;
+    margin-top: $spacing-4;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-accent;
+    transition: color $transition-base;
+    
+    &:hover {
+        color: $color-accent-light;
+    }
+    
+    svg {
+        width: 16px;
+        height: 16px;
+        margin-left: $spacing-1;
+    }
+}
+
+// CTA Button
+.ctaWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-10;
+}
+
+.ctaButton {
+    @include button-base;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-4 $spacing-8;
+    background-color: transparent;
+    color: $color-text-primary;
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+    font-size: $font-size-base;
+    transition: all $transition-base;
+    
+    &:hover {
+        background-color: $color-surface-light;
+        border-color: $color-accent;
+        color: $color-accent;
+    }
+}
+
+.ctaIcon {
+    width: 20px;
+    height: 20px;
+}

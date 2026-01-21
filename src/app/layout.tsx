@@ -1,16 +1,11 @@
-import { ThemeProvider } from '@/components/common/ThemeProvider';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import type { Metadata } from 'next';
-import FloatingHelper from '@/components/common/FloatingHelper';
+import { metadata as seoMetadata, viewport as seoViewport, jsonLd } from '@/config';
+import './globals.scss';
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] });
 
-export const metadata: Metadata = {
-    title: 'Сервисный центр - ремонт компьютеров, смартфонов, телевизоров и принтеров',
-    description: 'Профессиональный ремонт техники с гарантией: компьютеры, смартфоны, телевизоры и принтеры. Быстрый и качественный ремонт по доступным ценам.',
-    keywords: 'ремонт компьютеров, ремонт ноутбуков, ремонт телефонов, ремонт телевизоров, ремонт принтеров, сервисный центр',
-};
+export const viewport = seoViewport;
+export const metadata = seoMetadata;
 
 export default function RootLayout({
     children,
@@ -18,16 +13,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="ru" suppressHydrationWarning>
-            <body className={`${inter.className} bg-white text-gray-900 dark:bg-dark-bg dark:text-dark-text transition-colors duration-200`}>
-                <ThemeProvider>
-                    {children}
-                    <FloatingHelper
-                        phoneNumber="7XXXXXXXXXX" // Replace with your actual phone number
-                        telegramUsername="yourTelegramUsername" // Replace with your actual username
-                    />
-                </ThemeProvider>
+        <html lang="ru">
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
+            </head>
+            <body className={inter.className}>
+                {children}
             </body>
         </html>
     );
-} 
+}

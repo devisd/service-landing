@@ -1,0 +1,112 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer {
+    background-color: $color-surface;
+    border-top: 1px solid $color-border;
+    padding: $spacing-6 0;
+}
+
+.container {
+    @include container;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-5;
+    text-align: center;
+
+    @include md {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.logoIcon {
+    width: 32px;
+    height: 32px;
+    background-color: $color-text-primary;
+    border-radius: $radius-lg;
+    @include flex-center;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        color: $color-background;
+    }
+}
+
+.logoText {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-2;
+
+    @include md {
+        align-items: flex-start;
+    }
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    @include md {
+        justify-content: flex-start;
+    }
+}
+
+.link {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    transition: color $transition-base;
+
+    &:hover {
+        color: $color-text-primary;
+    }
+}
+
+.details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-2;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+
+    @include md {
+        justify-content: flex-start;
+    }
+}
+
+.separator {
+    color: $color-border;
+
+    @media (max-width: #{$breakpoint-sm}) {
+        display: none;
+    }
+}
+
+.copyright {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+}

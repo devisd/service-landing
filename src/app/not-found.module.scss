@@ -1,0 +1,69 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.notFound {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    @include container;
+}
+
+.content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.errorCode {
+    display: block;
+    font-size: 8rem;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: $color-accent;
+    margin-bottom: $spacing-4;
+    
+    @include md {
+        font-size: 12rem;
+    }
+}
+
+.title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-4;
+    
+    @include md {
+        font-size: $font-size-4xl;
+    }
+}
+
+.description {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-8;
+}
+
+.button {
+    @include button-base;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    padding: $spacing-4 $spacing-8;
+    background-color: $color-accent;
+    color: $color-text-primary;
+    border-radius: $radius-full;
+    font-size: $font-size-base;
+    
+    &:hover {
+        background-color: $color-accent-hover;
+    }
+    
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}

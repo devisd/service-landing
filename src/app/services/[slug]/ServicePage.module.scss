@@ -1,0 +1,286 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+// Hero Section
+.hero {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    
+    @include md {
+        min-height: 500px;
+    }
+}
+
+.heroImage {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        $color-background 0%,
+        rgba($color-background, 0.9) 30%,
+        rgba($color-background, 0.6) 100%
+    );
+}
+
+.heroContent {
+    position: relative;
+    width: 100%;
+    padding-bottom: $spacing-12;
+}
+
+.container {
+    @include container;
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-6;
+    transition: color $transition-base;
+
+    &:hover {
+        color: $color-accent;
+    }
+}
+
+.heroTitle {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-4;
+    
+    @include md {
+        font-size: $font-size-5xl;
+    }
+}
+
+.heroDescription {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    max-width: 600px;
+    
+    @include md {
+        font-size: $font-size-xl;
+    }
+}
+
+// Content Section
+.content {
+    padding: $spacing-12 0 $spacing-20;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-12;
+    
+    @include lg {
+        grid-template-columns: 1fr 400px;
+    }
+}
+
+.mainContent {
+    // Empty for structure
+}
+
+.section {
+    margin-bottom: $spacing-10;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.sectionTitle {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-6;
+}
+
+.description {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+    line-height: 1.7;
+}
+
+.featuresList {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+}
+
+.checkIcon {
+    width: 20px;
+    height: 20px;
+    color: $color-success;
+    flex-shrink: 0;
+}
+
+// Sidebar
+.sidebar {
+    @include lg {
+        position: sticky;
+        top: calc(64px + $spacing-6);
+        height: fit-content;
+    }
+}
+
+.priceCard {
+    @include card;
+    padding: $spacing-6;
+}
+
+.priceTitle {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-6;
+}
+
+.priceList {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    margin-bottom: $spacing-6;
+}
+
+.priceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $spacing-4;
+    padding-bottom: $spacing-4;
+    border-bottom: 1px solid $color-border;
+    
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+.priceInfo {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+}
+
+.priceName {
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+}
+
+.priceDuration {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+}
+
+.priceValue {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-accent;
+    white-space: nowrap;
+}
+
+.priceNote {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    margin-bottom: $spacing-6;
+}
+
+.ctaButton {
+    @include button-base;
+    width: 100%;
+    padding: $spacing-4;
+    background-color: $color-accent;
+    color: $color-text-primary;
+    border-radius: $radius-xl;
+    font-size: $font-size-base;
+    
+    &:hover {
+        background-color: $color-accent-hover;
+    }
+}
+
+// Other Services
+.otherServices {
+    margin-top: $spacing-20;
+    padding-top: $spacing-12;
+    border-top: 1px solid $color-border;
+}
+
+.otherGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.otherCard {
+    @include card;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    
+    &:hover .otherCardImage {
+        transform: scale(1.05);
+    }
+}
+
+.otherCardImage {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform $transition-slow;
+}
+
+.otherCardOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent);
+}
+
+.otherCardContent {
+    position: relative;
+    min-height: 200px;
+    padding: $spacing-6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.otherCardTitle {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-1;
+}
+
+.otherCardDescription {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+}
