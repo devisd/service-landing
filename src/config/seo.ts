@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { siteConfig } from './site';
+import { services } from './services';
 
 export const viewport: Viewport = {
     width: 'device-width',
@@ -9,18 +10,21 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
     title: {
-        default: `${siteConfig.name} — Ремонт компьютеров и техники Apple в Славгороде`,
+        default: `${siteConfig.name} — Ремонт компьютеров и техники в Славгороде`,
         template: `%s | ${siteConfig.name}`,
     },
-    description: `Профессиональный ремонт MacBook, iMac, iPhone, iPad в Славгороде. Гарантия до 24 месяцев, бесплатная диагностика, качественные запчасти. ${siteConfig.legal.name}.`,
+    description: `Профессиональный ремонт компьютеров, ноутбуков, телефонов, планшетов, мониторов, телевизоров и оргтехники в Славгороде. Гарантия до 24 месяцев, бесплатная диагностика. ${siteConfig.legal.name}.`,
     keywords: [
-        'ремонт MacBook Славгород',
-        'ремонт iMac',
-        'ремонт iPhone Славгород',
-        'ремонт iPad',
-        'сервис Apple Алтайский край',
         'ремонт компьютеров Славгород',
-        'ремонт ноутбуков',
+        'ремонт ноутбуков Славгород',
+        'ремонт телефонов Славгород',
+        'ремонт планшетов',
+        'ремонт мониторов',
+        'ремонт телевизоров',
+        'заправка картриджей Славгород',
+        'ремонт оргтехники',
+        'ремонт геймпадов',
+        'сервисный центр Алтайский край',
         siteConfig.name,
     ],
     authors: [{ name: siteConfig.legal.name }],
@@ -44,22 +48,22 @@ export const metadata: Metadata = {
         locale: 'ru_RU',
         url: siteConfig.url,
         siteName: siteConfig.name,
-        title: `${siteConfig.name} — Ремонт компьютеров и техники Apple`,
-        description: 'Профессиональный ремонт MacBook, iMac, iPhone, iPad в Славгороде. Гарантия до 24 месяцев.',
+        title: `${siteConfig.name} — Ремонт компьютеров и техники`,
+        description: 'Профессиональный ремонт компьютеров, ноутбуков, телефонов, планшетов, мониторов, ТВ и оргтехники в Славгороде. Гарантия до 24 месяцев.',
         images: [
             {
                 url: `${siteConfig.url}/og-image.jpg`,
                 width: 1200,
                 height: 630,
-                alt: `${siteConfig.name} — Ремонт техники Apple`,
+                alt: `${siteConfig.name} — Ремонт техники`,
             },
         ],
     },
 
     twitter: {
         card: 'summary_large_image',
-        title: `${siteConfig.name} — Ремонт техники Apple`,
-        description: 'Профессиональный ремонт MacBook, iMac, iPhone, iPad в Славгороде.',
+        title: `${siteConfig.name} — Ремонт компьютеров и техники`,
+        description: 'Профессиональный ремонт компьютеров, ноутбуков, телефонов, планшетов и оргтехники в Славгороде.',
         images: [`${siteConfig.url}/og-image.jpg`],
     },
 
@@ -115,15 +119,17 @@ export const jsonLd = {
         },
     ],
     sameAs: Object.values(siteConfig.socials),
-    description: `Профессиональный ремонт компьютеров и техники Apple в Славгороде. MacBook, iMac, iPhone, iPad. Гарантия до 24 месяцев.`,
+    description: `Профессиональный ремонт компьютеров, ноутбуков, телефонов, планшетов, мониторов, телевизоров и оргтехники в Славгороде. Гарантия до 24 месяцев.`,
     hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Услуги по ремонту',
-        itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ремонт MacBook' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ремонт iPhone' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ремонт iPad' } },
-            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ремонт iMac' } },
-        ],
+        itemListElement: services.map(service => ({
+            '@type': 'Offer',
+            itemOffered: {
+                '@type': 'Service',
+                name: service.title,
+                description: service.shortDescription,
+            },
+        })),
     },
 };
